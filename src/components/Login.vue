@@ -83,7 +83,7 @@ export default {
                 if (token) {
                   this.setToken(res.data.token);
                 }
-                this.$router.push({ name: "schedule" });
+                this.$router.push({ name: "Home" });
               } else {
                 this.$message.error(this.$t("login.failedTips"));
               }

@@ -8,11 +8,17 @@ const routes = [
   {
     path: "/",
     name: "Home",
+    meta: {
+      requireAuth: true,
+    },
     component: Home
   },
   {
     path: "/about",
     name: "About",
+    meta: {
+      requireAuth: true,
+    },
     component: () => import("@v/About.vue")
   },
   {
@@ -24,6 +30,22 @@ const routes = [
 
 const router = new VueRouter({
   routes
+});
+
+const hasToken = () => Boolean(localStorage.getItem("token"));
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((item) => item.meta.requireAuth)) {
+    if (!hasToken()) {
+      next({
+        path: "/login",
+        replace: true,
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
