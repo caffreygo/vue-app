@@ -18,6 +18,10 @@ module.exports = {
   },
   productionSourceMap: false,
   pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'scss',
+      patterns: ['./src/static/style/variable.scss']
+    },
     i18n: {
       locale: "en",
       fallbackLocale: "en",
