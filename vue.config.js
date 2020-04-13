@@ -16,12 +16,15 @@ module.exports = {
       }
     }
   },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/assets/style/variable.scss";`
+      },
+    }
+  },
   productionSourceMap: false,
   pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'scss',
-      patterns: ['./src/assets/style/variable.scss']
-    },
     i18n: {
       locale: "en",
       fallbackLocale: "en",
